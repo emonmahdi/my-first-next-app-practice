@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import React from "react";
 
 const blogsData = [
@@ -40,9 +41,13 @@ const blogsData = [
 ];
 
 const BlogDetailsPage = ({ params }) => {
-  //   console.log(params);
+  console.log(params);
   const blog = blogsData.find((b) => b.slug == params.slug);
   console.log(blog.title);
+
+  if (!blog || !blog?.title) {
+    notFound();
+  }
 
   if (!blog) {
     return <h2 className="text-red-600">Blog not found!</h2>;
@@ -51,8 +56,8 @@ const BlogDetailsPage = ({ params }) => {
   return (
     <div className="min-h-screen bg-gray-50 py-10">
       <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">{blog.title}</h1>
-        <p className="text-gray-600">{blog.description}</p>
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">{blog?.title}</h1>
+        <p className="text-gray-600">{blog?.description}</p>
       </div>
     </div>
   );
