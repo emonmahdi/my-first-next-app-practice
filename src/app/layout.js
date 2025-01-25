@@ -13,8 +13,8 @@ export default function RootLayout({ children }) {
         <header>
           <Header />
         </header>
-        <div className="h-screen">{children}</div>
-        <footer className="bg-gray-400">This is Footer</footer>
+        <div className="">{children}</div>
+        <footer className="bg-gray-400 py-12">This is Footer</footer>
       </body>
     </html>
   );
